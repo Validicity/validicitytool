@@ -11,29 +11,29 @@ printVersion(v) {
 }
 
 main(List<String> arguments) async {
-  var runner = CommandRunner(
-      "validicitytool", "Administration tool for Validicity.")
-    ..argParser.addOption("config",
-        abbr: "c",
-        defaultsTo: "validicitytool.yaml",
-        valueHelp: "config file name",
-        callback: (fn) => configFile = fn)
-    /*..addCommand(CustomerCommand())
+  var runner =
+      CommandRunner("validicitytool", "Administration tool for Validicity.")
+        ..argParser.addOption("config",
+            abbr: "c",
+            defaultsTo: "validicitytool.yaml",
+            valueHelp: "config file name",
+            callback: (fn) => configFile = fn)
+        ..addCommand(OrganisationCommand())
         ..addCommand(ProjectCommand())
-        ..addCommand(SampleCommand())
-        ..addCommand(UserCommand())*/
-    ..addCommand(BootstrapCommand())
-    ..addCommand(StatusCommand())
-    ..argParser.addFlag('version',
-        negatable: false,
-        help: 'Show version of validicitytool',
-        callback: printVersion)
-    ..argParser.addFlag('verbose',
-        help: 'Show more information when executing commands',
-        abbr: 'v',
-        defaultsTo: null)
-    ..argParser.addFlag('pretty',
-        help: 'Pretty print JSON in results', abbr: 'p', defaultsTo: null);
+        //..addCommand(SampleCommand())
+        //..addCommand(UserCommand())
+        ..addCommand(BootstrapCommand())
+        ..addCommand(StatusCommand())
+        ..argParser.addFlag('version',
+            negatable: false,
+            help: 'Show version of validicitytool',
+            callback: printVersion)
+        ..argParser.addFlag('verbose',
+            help: 'Show more information when executing commands',
+            abbr: 'v',
+            defaultsTo: null)
+        ..argParser.addFlag('pretty',
+            help: 'Pretty print JSON in results', abbr: 'p', defaultsTo: null);
   await runner.run(arguments);
   exit(0);
 }

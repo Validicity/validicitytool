@@ -19,11 +19,11 @@ mqtt:
 
 # Configuration of REST API
 api:
-  # url: "https://test.validicity.cloud/rpc"
-  url: "https://prod.validicity.cloud/rpc"
-  username: "client"
+  # url: "https://test.validi.city/rpc"
+  url: "https://prod.validi.city/rpc"
+  username: "admin"
   # Why do we need scopes? Default value seems to not work for this one
-  scopes: ["client"]
-  password: "mupp"
-  clientID: "com.validicity.client"
+  scopes: ["user", "superuser", "admin", "client"]
+  password: "maze123"
+  clientID: "city.validi.validicitytool"
   application: "validicity"
