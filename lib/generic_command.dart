@@ -41,7 +41,8 @@ class GenericCreateCommand extends GenericSubCommand {
   void exec() async {
     var fn = argResults['file'];
     var payload = loadFile(fn);
-    await api.getClient().doPost('${entity}', payload);
+    result =
+        api.handleResult(await api.getClient().doPost('${entity}', payload));
   }
 }
 
@@ -59,7 +60,8 @@ class GenericUpdateCommand extends GenericSubCommand {
   void exec() async {
     var fn = argResults['file'];
     var id = argResults['id'];
-    await api.getClient().doPut('$entity/$id', loadFile(fn));
+    result = api
+        .handleResult(await api.getClient().doPut('$entity/$id', loadFile(fn)));
   }
 }
 
@@ -74,7 +76,8 @@ class GenericDeleteCommand extends GenericSubCommand {
 
   void exec() async {
     var id = argResults['id'];
-    await api.getClient().doDelete('${entity}/${id}');
+    result =
+        api.handleResult(await api.getClient().doDelete('${entity}/${id}'));
   }
 }
 
@@ -90,6 +93,8 @@ class GenericGetCommand extends GenericSubCommand {
 
   void exec() async {
     var id = argResults['id'];
-    await api.getClient().doGet(id != null ? '${entity}/$id' : '${entity}');
+    result = api.handleResult(await api
+        .getClient()
+        .doGet(id != null ? '${entity}/$id' : '${entity}'));
   }
 }

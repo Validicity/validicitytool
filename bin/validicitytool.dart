@@ -19,9 +19,9 @@ main(List<String> arguments) async {
             valueHelp: "config file name",
             callback: (fn) => configFile = fn)
         ..addCommand(OrganisationCommand())
+        ..addCommand(UserCommand())
         ..addCommand(ProjectCommand())
         //..addCommand(SampleCommand())
-        //..addCommand(UserCommand())
         ..addCommand(BootstrapCommand())
         ..addCommand(StatusCommand())
         ..argParser.addFlag('version',

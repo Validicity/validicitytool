@@ -14,7 +14,7 @@ import 'validicitytool.dart';
 abstract class BaseCommand extends Command implements CredentialsHolder {
   RestClient client;
   ValidicityServerAPI api;
-  Map<String, dynamic> result;
+  dynamic result;
   File _credentialsFile;
 
   int intArg(String name) {
@@ -54,7 +54,7 @@ abstract class BaseCommand extends Command implements CredentialsHolder {
     exit(0);
   }
 
-  void handleResult(Map result) {
+  void handleResult(dynamic result) {
     if (result != null) {
       if (config.pretty) {
         try {
@@ -129,7 +129,7 @@ class BootstrapCommand extends BaseCommand {
 
   void exec() async {
     var payload = loadFile(argResults['file']);
-    await api.bootstrap(payload);
+    result = await api.bootstrap(payload);
   }
 }
 
@@ -172,7 +172,7 @@ class RegisterCommand extends BaseCommand {
     if (validicityKey == null) {
       print("Keys do not exist, you first need to create new keys");
     }
-    await api.register(validicityKey.publicKey);
+    result = await api.register(validicityKey.publicKey);
   }
 }
 
@@ -181,6 +181,13 @@ class OrganisationCommand extends GenericCommand {
       : super("organisation", "Working with Organisations in Validicity.") {
     //addSubcommand(InstallationAllCustomerCommand(entity));
   }
+  @override
+  String get name => entity;
+}
+
+class UserCommand extends GenericCommand {
+  UserCommand()
+      : super("user", "Working with Users in Validicity, username is id.");
   @override
   String get name => entity;
 }
@@ -206,7 +213,7 @@ class ProjectAllOrganisationCommand extends GenericSubCommand {
 
   void exec() async {
     var organisation = argResults['organisation'];
-    await client.doGet('organisation/$organisation/project');
+    await api.getClient().doGet('organisation/$organisation/project');
   }
 }
 
@@ -222,7 +229,7 @@ class UserAddProjectCommand extends GenericSubCommand {
   void exec() async {
     var project = intArg('project');
     var user = intArg('user');
-    await api.addProjectUser(project, user);
+    result = await api.addProjectUser(project, user);
     // await client.doPost('user/$user/Project/$Project', null);
   }
 }
@@ -239,7 +246,7 @@ class UserRemoveProjectCommand extends GenericSubCommand {
   void exec() async {
     var project = intArg('project');
     var user = intArg('user');
-    await api.removeProjectUser(project, user);
+    result = await api.removeProjectUser(project, user);
     // await client.doDelete('user/$user/project/$project');
   }
 }
