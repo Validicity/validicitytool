@@ -1,5 +1,4 @@
 import 'package:validicitylib/config.dart';
-import 'package:validicitylib/rest.dart';
 
 import 'validicitytool.dart';
 

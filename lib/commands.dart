@@ -260,7 +260,8 @@ class UserAllProjectCommand extends GenericSubCommand {
   }
 
   void exec() async {
-    var project = argResults['project'];
-    await client.doGet('project/$project/users');
+    var project = intArg('project');
+    result = await api.getProjectUsers(project);
+    // await client.doGet('project/$project/users');
   }
 }
