@@ -1,19 +1,19 @@
 name: validicitytool
 description: The CLI tool for managing Validicity
-version: 0.2.0
+version: 0.3.0
 author: Göran Krampe <goran.krampe@gmail.com>
 
 environment:
-  sdk: '>=2.8.3'
+  sdk: '>=2.8.4'
 
 executables:  
   validicitytool: validicitytool
 
 dependencies:
   async: ^2.4.1
-  args: ^1.5.2
+  args: ^1.6.0
   http: ^0.12.1
-  logging: ^0.11.3+2
+  logging: ^0.11.4
 
   validicitylib:
     path: ../validicitylib

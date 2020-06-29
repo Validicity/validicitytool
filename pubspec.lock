@@ -42,7 +42,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.14.12"
+    version: "1.14.13"
   convert:
     dependency: transitive
     description:
@@ -135,7 +135,7 @@ packages:
       name: mqtt_client
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.2.1"
+    version: "7.2.1"
   nanodart:
     dependency: transitive
     description:
@@ -149,7 +149,7 @@ packages:
       name: oauth2
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.6.0"
+    version: "1.6.1"
   path:
     dependency: transitive
     description:
@@ -198,7 +198,7 @@ packages:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.6"
+    version: "1.2.0"
   validicitylib:
     dependency: "direct main"
     description:
@@ -214,4 +214,4 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.8.3 <3.0.0"
+  dart: ">=2.8.4 <3.0.0"
