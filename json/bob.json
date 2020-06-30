@@ -1,0 +1,8 @@
+{
+  "username": "bob",
+  "password": "bobspass",
+  "name": "Bob Smith",
+  "organisation": {"id": 4},
+  "email": "bob@krampe.se",
+  "type": "user"
+}

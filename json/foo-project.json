@@ -1,0 +1,8 @@
+{
+  "organisation": {"id": 4},
+  "name": "Foo Demo Project ",
+  "description": "Foo demo project",
+  "location": "Europe/Stockholm",
+  "metadata": {
+  }
+}
