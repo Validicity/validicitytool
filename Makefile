@@ -3,7 +3,7 @@ PREFIX = /usr/local
 all: validicitytool
 
 validicitytool: bin/validicitytool.dart
-	pub get
+	pub run pubspec_extract
 	dart2native -o $@ $^
 
 .PHONY: install
