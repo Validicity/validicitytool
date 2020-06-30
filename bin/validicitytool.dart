@@ -1,11 +1,12 @@
 import 'package:args/command_runner.dart';
 import 'package:validicitytool/commands.dart';
 import 'package:validicitytool/validicitytool.dart';
+import 'package:validicitytool/pubspec.dart';
 
 /// Print version and exit
 printVersion(v) {
   if (v) {
-    print('0.1.0');
+    print(Pubspec.version);
     exit(0);
   }
 }
