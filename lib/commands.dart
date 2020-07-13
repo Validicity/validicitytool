@@ -265,3 +265,26 @@ class UserAllProjectCommand extends GenericSubCommand {
     // await client.doGet('project/$project/users');
   }
 }
+
+class SampleCommand extends GenericCommand {
+  SampleCommand() : super("sample", "Working with Samples in Validicity.") {
+    addSubcommand(SampleChainCommand(entity));
+  }
+
+  @override
+  String get name => entity;
+}
+
+class SampleChainCommand extends GenericSubCommand {
+  final name = "users";
+
+  SampleChainCommand(entity)
+      : super(entity, "Get a full chain of Samples including Proofs.") {
+    argParser.addOption('serial', abbr: 's', help: "The Sample serial");
+  }
+
+  void exec() async {
+    var serial = argResults["serial"];
+    result = await api.getChain(serial);
+  }
+}
