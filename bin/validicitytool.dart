@@ -22,7 +22,8 @@ main(List<String> arguments) async {
         ..addCommand(OrganisationCommand())
         ..addCommand(UserCommand())
         ..addCommand(ProjectCommand())
-        ..addCommand(SampleCommand())
+        ..addCommand(SampleChainCommand())
+        ..addCommand(ValidateProofCommand())
         ..addCommand(BootstrapCommand())
         ..addCommand(StatusCommand())
         ..argParser.addFlag('version',

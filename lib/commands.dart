@@ -266,25 +266,30 @@ class UserAllProjectCommand extends GenericSubCommand {
   }
 }
 
-class SampleCommand extends GenericCommand {
-  SampleCommand() : super("sample", "Working with Samples in Validicity.") {
-    addSubcommand(SampleChainCommand(entity));
-  }
+class SampleChainCommand extends BaseCommand {
+  String description = "Get a full chain of Samples including Proofs.";
+  String name = "chain";
 
-  @override
-  String get name => entity;
-}
-
-class SampleChainCommand extends GenericSubCommand {
-  final name = "users";
-
-  SampleChainCommand(entity)
-      : super(entity, "Get a full chain of Samples including Proofs.") {
+  SampleChainCommand() {
     argParser.addOption('serial', abbr: 's', help: "The Sample serial");
   }
 
   void exec() async {
     var serial = argResults["serial"];
     result = await api.getChain(serial);
+  }
+}
+
+class ValidateProofCommand extends BaseCommand {
+  String description = "Validate proof against BTC and CAL.";
+  String name = "validate";
+
+  ValidateProofCommand() {
+    argParser.addOption('proof', abbr: 'p', help: "The Proof in base64 form");
+  }
+
+  void exec() async {
+    var proof = argResults["proof"];
+    result = await api.validateProof(proof);
   }
 }
